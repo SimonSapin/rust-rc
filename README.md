@@ -17,3 +17,31 @@ To make this work, some features had to be removed:
   (for a total of 24 bytes instead of 8 on 64-bit platforms).
 * `std::intrinsics::assume` is not used,
   so the optimizer may not be able to remove as many redundant checks.
+
+
+## Recommended usage
+
+```toml
+# Cargo.toml
+[features]
+unstable = []
+
+[dependencies]
+rc = {
+    "0.1.0",
+    # Unfortunately, as of this writing, Cargo features can not *disable* dependencies.
+    # See https://github.com/rust-lang/cargo/issues/1839
+    # optional = true,
+}
+```
+
+```rust
+// lib.rs
+#[cfg(not(feature = "unstable"))] extern crate rc;
+```
+
+```rust
+// some_module.rs
+#[cfg(feature = "unstable")] use std::rc::{Rc, Weak};
+#[cfg(not(feature = "unstable"))] use rc::{Rc, Weak};
+```
