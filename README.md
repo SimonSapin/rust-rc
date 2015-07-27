@@ -23,6 +23,7 @@ To make this work, some features had to be removed:
 
 ```toml
 # Cargo.toml
+
 [features]
 unstable = []
 
@@ -34,11 +35,17 @@ rc = { version = "0.1.0" }
 
 ```rust
 // lib.rs
+
+#![cfg_attr(feature = "unstable", feature(rc_weak))]
+
 #[cfg(not(feature = "unstable"))] extern crate rc;
+#[cfg(feature = "unstable")] mod rc {
+    pub use std::rc::*;
+}
 ```
 
 ```rust
 // some_module.rs
-#[cfg(feature = "unstable")] use std::rc::{Rc, Weak};
-#[cfg(not(feature = "unstable"))] use rc::{Rc, Weak};
+
+use rc::{Rc, Weak};
 ```
