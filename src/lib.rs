@@ -32,7 +32,7 @@
 //! and have the `Owner` remain allocated as long as any `Gadget` points at it.
 //!
 //! ```rust
-//! use std::rc::Rc;
+//! use rc::Rc;
 //!
 //! struct Owner {
 //!     name: String
@@ -91,9 +91,8 @@
 //! documentation for more details on interior mutability.
 //!
 //! ```rust
-//! # #![feature(rc_weak)]
-//! use std::rc::Rc;
-//! use std::rc::Weak;
+//! use rc::Rc;
+//! use rc::Weak;
 //! use std::cell::RefCell;
 //!
 //! struct Owner {
@@ -181,7 +180,7 @@ impl<T> Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     /// ```
@@ -210,8 +209,7 @@ impl<T> Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// # #![feature(rc_unique)]
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let x = Rc::new(3);
     /// assert_eq!(Rc::try_unwrap(x), Ok(3));
@@ -243,8 +241,7 @@ impl<T> Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// # #![feature(rc_weak)]
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -269,8 +266,7 @@ impl<T> Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// # #![feature(rc_unique)]
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -289,8 +285,7 @@ impl<T> Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// # #![feature(rc_unique)]
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let mut x = Rc::new(3);
     /// *Rc::get_mut(&mut x).unwrap() = 4;
@@ -324,9 +319,8 @@ pub fn strong_count<T>(this: &Rc<T>) -> usize { Rc::strong_count(this) }
 /// # Examples
 ///
 /// ```
-/// # #![feature(rc_unique)]
-/// use std::rc;
-/// use std::rc::Rc;
+/// use rc;
+/// use rc::Rc;
 ///
 /// let five = Rc::new(5);
 ///
@@ -342,8 +336,7 @@ pub fn is_unique<T>(rc: &Rc<T>) -> bool { Rc::is_unique(rc) }
 /// # Examples
 ///
 /// ```
-/// # #![feature(rc_unique)]
-/// use std::rc::{self, Rc};
+/// use rc::{self, Rc};
 ///
 /// let x = Rc::new(3);
 /// assert_eq!(rc::try_unwrap(x), Ok(3));
@@ -362,8 +355,7 @@ pub fn try_unwrap<T>(rc: Rc<T>) -> Result<T, Rc<T>> { Rc::try_unwrap(rc) }
 /// # Examples
 ///
 /// ```
-/// # #![feature(rc_unique)]
-/// use std::rc::{self, Rc};
+/// use rc::{self, Rc};
 ///
 /// let mut x = Rc::new(3);
 /// *rc::get_mut(&mut x).unwrap() = 4;
@@ -384,8 +376,7 @@ impl<T: Clone> Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// # #![feature(rc_unique)]
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let mut five = Rc::new(5);
     ///
@@ -425,7 +416,7 @@ impl<T> Drop for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// {
     ///     let five = Rc::new(5);
@@ -473,7 +464,7 @@ impl<T> Clone for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -492,7 +483,7 @@ impl<T: Default> Default for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let x: Rc<i32> = Default::default();
     /// ```
@@ -510,7 +501,7 @@ impl<T: PartialEq> PartialEq for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -526,7 +517,7 @@ impl<T: PartialEq> PartialEq for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -546,7 +537,7 @@ impl<T: PartialOrd> PartialOrd for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -564,7 +555,7 @@ impl<T: PartialOrd> PartialOrd for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -580,7 +571,7 @@ impl<T: PartialOrd> PartialOrd for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -596,7 +587,7 @@ impl<T: PartialOrd> PartialOrd for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -612,7 +603,7 @@ impl<T: PartialOrd> PartialOrd for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -630,7 +621,7 @@ impl<T: Ord> Ord for Rc<T> {
     /// # Examples
     ///
     /// ```
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -688,8 +679,7 @@ impl<T> Weak<T> {
     /// # Examples
     ///
     /// ```
-    /// # #![feature(rc_weak)]
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let five = Rc::new(5);
     ///
@@ -715,8 +705,7 @@ impl<T> Drop for Weak<T> {
     /// # Examples
     ///
     /// ```
-    /// # #![feature(rc_weak)]
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// {
     ///     let five = Rc::new(5);
@@ -758,8 +747,7 @@ impl<T> Clone for Weak<T> {
     /// # Examples
     ///
     /// ```
-    /// # #![feature(rc_weak)]
-    /// use std::rc::Rc;
+    /// use rc::Rc;
     ///
     /// let weak_five = Rc::new(5).downgrade();
     ///
@@ -822,13 +810,8 @@ impl<T> RcBoxPtr<T> for Weak<T> {
 #[cfg(test)]
 mod tests {
     use super::{Rc, Weak, weak_count, strong_count};
-    use std::boxed::Box;
     use std::cell::RefCell;
-    use std::option::Option;
-    use std::option::Option::{Some, None};
-    use std::result::Result::{Err, Ok};
     use std::mem::drop;
-    use std::clone::Clone;
 
     #[test]
     fn test_clone() {
