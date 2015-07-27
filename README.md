@@ -27,12 +27,9 @@ To make this work, some features had to be removed:
 unstable = []
 
 [dependencies]
-rc = {
-    "0.1.0",
-    # Unfortunately, as of this writing, Cargo features can not *disable* dependencies.
-    # See https://github.com/rust-lang/cargo/issues/1839
-    # optional = true,
-}
+# Unfortunately, as of this writing, Cargo features can not *disable* dependencies.
+# See https://github.com/rust-lang/cargo/issues/1839
+rc = { version = "0.1.0" }
 ```
 
 ```rust
