@@ -19,18 +19,23 @@ To make this work, some features had to be removed:
   so the optimizer may not be able to remove as many redundant checks.
 
 
-## Recommended usage
+## Supporting both stable and unstable Rust
+
+This crates has an `unstable`
+[Cargo feature](http://doc.crates.io/manifest.html#the-[features]-section)
+that makes it simply re-export `std::rc`, so that none of the above drawbacks apply.
+
+If you want your own code to support both stable and unstable Rust,
+and get the size optimizations when available, use this crates as follows:
 
 ```toml
 # Cargo.toml
 
 [features]
-unstable = []
+unstable = ["rc/unstable"]
 
 [dependencies]
-# Unfortunately, as of this writing, Cargo features can not *disable* dependencies.
-# See https://github.com/rust-lang/cargo/issues/1839
-rc = { version = "0.1.0" }
+rc = "0.1.1"
 ```
 
 ```rust
@@ -38,10 +43,7 @@ rc = { version = "0.1.0" }
 
 #![cfg_attr(feature = "unstable", feature(rc_weak))]
 
-#[cfg(not(feature = "unstable"))] extern crate rc;
-#[cfg(feature = "unstable")] mod rc {
-    pub use std::rc::*;
-}
+extern crate rc;
 ```
 
 ```rust

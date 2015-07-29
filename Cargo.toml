@@ -1,7 +1,10 @@
 [package]
 name = "rc"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["Simon Sapin <simon.sapin@exyr.org>"]
 repository = "https://github.com/SimonSapin/rust-rc"
 description = "A copy of std::rc that runs on stable Rust with weak references"
 license = "MIT / Apache-2.0"
+
+[features]
+unstable = []
